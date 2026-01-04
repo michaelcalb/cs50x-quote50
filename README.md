@@ -1,3 +1,7 @@
+> [!NOTE]
+> this was my final project for CS50x 2024. Apart from this note, the code and readme remain untouched. <br>
+> make sure you have flask installed in your machine, then run ``flask run``.
+
 # Quote50
 #### Video Demo:  https://youtu.be/2GdRzVeC9ko
 #### Description:
