@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote50</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-profile">
+                <a href="/profile"><i class="bi bi-person header-profile-icon"></i></a>
+                <a href="/login"><i class="bi bi-box-arrow-right header-logout"></i></a>
+            </div>
+            <div class="header-logo">
+                <a href="/"><img src="/static/img/logo.png" alt="Quote50 Logo" class="logo-img"></a>
+            </div>
+            <div class="header-search">
+                <form action="/search" method="get">
+                    <div class="header-input-container">
+                        <input type="text" name="search" placeholder="Search" required>
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </header>
+        <div class="content">
+            <main>
+                {% block main %}{% endblock %}
+            </main>
+        </div>
+        <footer>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/static/LikesRequotes.js"></script>
+        <script src="/static/Placeholders.js"></script>
+        <script src="/static/Hovering.js"></script>
+        <script src="/static/SearchFilters.js"></script>
+    </div>
+</body>
+</html>

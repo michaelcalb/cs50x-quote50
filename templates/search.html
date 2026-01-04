@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% import "_quotes.html" as quotes_query %}
+
+{% block main %}
+    <div class="search-container">
+        <div class="filter-search">
+            <button class="filter-button" id="filter-button-users" onclick="resultsUsers()">Users</button>
+            <button class="filter-button filter-button-quotes filter-selected" id="filter-button-quotes" onclick="resultsQuotes()">Quotes</button>
+            <button class="filter-button filter-button-sources" id="filter-button-sources" onclick="resultsSources()">Sources</button>
+        </div>
+        <div class="results invisible" id="results-users">
+            {% for user in users %}
+                <div class="users-each">
+                    <a href="/profile/{{ user.id }}">
+                        <p><i class="bi bi-at"></i>{{ user.username }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="results results-quotes" id="results-quotes">
+            {{ quotes_query.render_quotes(quotes) }}
+        </div>
+        <div class="results results-sources invisible" id="results-sources">
+            {{ quotes_query.render_quotes(names) }}
+        </div>
+    </div>
+{% endblock %}

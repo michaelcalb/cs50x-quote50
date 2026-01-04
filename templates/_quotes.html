@@ -1,0 +1,36 @@
+{% macro render_quotes(quotes) %}
+    <div class="render-quotes">
+        {% for quote in quotes %}
+            <div class="quote-box">
+                <div class="quote-header">
+                    <div class="quote-user">
+                        {% if quote.requoter_username %}
+                        <a href="#"><i class="bi bi-at"></i>{{ quote.requoter_username }}</a><i class="bi bi-arrow-repeat"></i><a href="/profile/{{ quote.user }}"><i class="bi bi-at"></i>{{ quote.username }}</a>
+                        {% else %}
+                        <a href="/profile/{{ quote.user }}"><i class="bi bi-at"></i>{{ quote.username }}</a>
+                        {% endif %}
+                    </div>
+                    <div class="quote-time">
+                        <p>{{ quote.timestamp }}</p>
+                    </div>
+                </div>
+                <div class="quote-text">
+                    <p>❝{{ quote.text }}❞</p>
+                </div>
+                {% if quote.name == None %}
+                <div class="quote-source">
+                    <p>From {{ quote.source }}</p>
+                </div>
+                {% else %}
+                <div class="quote-source">
+                    <p>From {{ quote.source }} <i>{{ quote.name }}</i></p>
+                </div>
+                {% endif %}
+                <div class="quote-buttons">
+                    <button type="button" class="like-button" data-quote-id="{{ quote.id }}" data-like-button onclick="updateLikes('{{ quote.id }}', this)"><i class="bi bi-heart like"></i><span id="like-counter-{{ quote.id }}" class="quote-button-number">{{ quote.likes }}</span></button>
+                    <button type="button" class="requote-button" data-quote-id="{{ quote.id }}" data-requote-button onclick="updateRequotes('{{ quote.id }}', this)"><i class="bi bi-arrow-repeat requote"></i><span id="requote-counter-{{ quote.id }}" class="quote-button-number">{{ quote.requotes }}</span></button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

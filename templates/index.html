@@ -1,0 +1,25 @@
+{% import "_quotes.html" as quotes_query %}
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="new-quote-box">
+        <form action="/quote" method="post" class="new-quote-form">
+            <div class="form-quote">❝<input type="text" name="quote" placeholder="Your quote" required>❞</div>
+            <div class="form-source">
+                From
+                <select name="source" id="sourceSelect" onchange="updatePlaceholder()">
+                    <option value="" selected disabled>...</option>
+                    <option value="the book">book</option>
+                    <option value="the movie">movie</option>
+                    <option value="the tv series">tv series</option>
+                    <option value="myself">myself</option>
+                    <option value="the person">person</option>
+                    <option value="the song">song</option>
+                </select>
+            <input type="text" id="sourceInput" name="sourceName" required>
+            </div>
+            <div class="new-quote-submit"><button type="submit">Quote</button></div>
+        </form>
+    </div>
+    {{ quotes_query.render_quotes(quotes) }}
+{% endblock %}
